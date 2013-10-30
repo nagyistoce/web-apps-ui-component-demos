@@ -186,26 +186,26 @@ launcher is installed on the device.
 
 See the licence text file delivered with this project. The licence file is also
 available online at
-http://projects.developer.nokia.com/webappsuivisualisation/browser/Licence.txt
+https://github.com/nokia-developer/web-apps-ui-component-demos/blob/master/LICENCE.TXT
 
 
 6. Related documentation
 -------------------------------------------------------------------------------
 Mobile Web Library
-- http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!technical-library/descriptions-of-mwl-methods.html
+* http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!technical-library/descriptions-of-mwl-methods.html
 
-S40 Web Apps Design Library:
-- http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction.html
+Web Apps Design Library:
+* http://developer.nokia.com/Resources/Library/Nokia_Asha_web_apps_library/#!design-library.html
 
 HTML 4.01
-- http://www.w3.org/TR/1999/REC-html401-19991224/
+* http://www.w3.org/TR/1999/REC-html401-19991224/
 
 JavaScript 1.6
-- https://developer.mozilla.org/en/JavaScript/Reference
-- https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.6
+* https://developer.mozilla.org/en/JavaScript/Reference
+* https://developer.mozilla.org/en/JavaScript/New_in_JavaScript/1.6
 
 CSS Mobile Profile 2
-- http://www.w3.org/TR/2008/CR-css-mobile-20081210/
+* http://www.w3.org/TR/2008/CR-css-mobile-20081210/
 
 
 7. Version history
