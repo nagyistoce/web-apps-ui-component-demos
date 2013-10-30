@@ -38,18 +38,17 @@ patterns:
       tree-like navigational example.
   
 * Patterns
-   * File upload demonstrates selecting and sending a file with HTML forms.
-   * File download demonstrates downloading and saving a file from a server.
-   * Page Title Link demonstrates tree structure -like navigation, with added
-     title link.
-   * Passwords example demonstrates using HTML password input and saving
-     information to cloud.
-   * Web Page Link demonstrates opening a web link from within a web app.
-   * Search demonstrates how to implement searching functionality to a web
-     application.
-   * Sharing content example demonstrates how to incorporate sharing content
-     via SMS or Facebook with web app technologies.
-
+    * File upload demonstrates selecting and sending a file with HTML forms.
+    * File download demonstrates downloading and saving a file from a server.
+    * Page Title Link demonstrates tree structure -like navigation, with added
+      title link.
+    * Passwords example demonstrates using HTML password input and saving
+      information to cloud.
+    * Web Page Link demonstrates opening a web link from within a web app.
+    * Search demonstrates how to implement searching functionality to a web
+      application.
+    * Sharing content example demonstrates how to incorporate sharing content
+      via SMS or Facebook with web app technologies.
 	
 In brief, this example application demonstrates:
 * Different UI "components" (i.e. HTML, CSS & JavaScript code snippets) and
