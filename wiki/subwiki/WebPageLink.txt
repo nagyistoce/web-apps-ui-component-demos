@@ -1,0 +1,51 @@
+= Open Web Link =
+
+The Open Web Link example demonstrates opening an external web page with MWL loadURL() method.
+
+== Design ==
+
+The Web Page Link example is a simple page with a button for opening a web page (i.e. www.nokia.com).
+
+For more information on opening web links, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction/navigating-through-web-links.html Series 40 web apps design library].
+
+==== Open Web Link help text: ====
+Open webpage demonstrates a link to a new webpage outside the web app. The browser will return from the web page to the web app after people have finished browsing the web page.
+
+[[Image(open_web_link.png)]] [[Image(open_web_link_webpage.png)]]
+
+== Implementation ==
+
+The Open Web Link mini app is implemented just with simple input button and an !onclick handler for it, which executes the mwl.loadURL() code. Check the code below.
+
+{{{
+<!--Open web link mini app-->
+<div id="openWebLink" class="slider_section hide">
+  <div id="progressIndicator_content">
+  
+    <div class="fill">
+      <input type="button" id="open_web_link_button"
+       class="button centered_button" value="Open web link"
+       onclick="mwl.loadURL('http://www.nokia.com');" />
+    </div>
+
+  </div>
+</div>
+<!--End Open web link mini app-->
+}}}
+
+CSS class definitions used with the Open Web Link mini app:
+
+{{{
+.button {
+	height: 40px;
+	background-image: url('../img/button_background.png');
+	color: #fff;
+}
+
+.centered_button {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 10%
+}
+}}}

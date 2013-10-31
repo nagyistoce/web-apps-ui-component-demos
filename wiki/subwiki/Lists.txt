@@ -1,0 +1,139 @@
+= Lists =
+
+The lists example demonstrates how to create different kinds of lists, such a simple item list with icons, lists with labels, table and category like lists. The example also demonstrates the use of MWL toggleClass() function for toggling specified CSS classes on / off.
+
+== Design ==
+
+The Lists example starts by demonstrating a simple item list on the "Normal" tab. Other tabs include lists with labels, table like lists and an accordion list with defined set of categories. Each list item also demonstrates the platform drawn item selector and the use of onclick event handlers.
+
+For more information on Lists, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction/lists.html Series 40 web apps design library].
+
+==== Lists help text: ====
+Lists in this example are compiled of three different items: single line item; single line item with an icon; and two-row item with a title, content, time stamp and an indicator icon. A list can be without a separator (Normal), with a separator (Label), grouped (Table), or it can be organised with expanding headers/collapsing lists (Category).
+
+[[Image(category_list_normal.png)]] [[Image(category_list_icons.png)]] [[Image(category_list_fancy.png)]]
+
+== Implementation ==
+
+The example code snippet shows how to create different kinds of lists and  list items.
+
+Please note, that the horizontal aligning of the elements is usually done with tables in S40 Web Apps, as the CSS "float" style formatting isn't supported.
+
+{{{
+<!-- Simple text list item -->
+<div class="text_list_item" onclick="">Item 1</div>
+
+
+<!-- A simple list header item -->
+<div class="list_section_header">with icon</div>
+
+
+<!-- List item with image and text -->
+<div class="picture_list_item" onclick="">
+	<img src="img/smile.png" height="20" width="20" alt="smile"
+		 class="picture_list_item_image"></img>
+	<span class="valignMdl">Item 2</span>
+</div>
+
+
+<!-- A Category type of a list, with sub items -->
+<div id="category1" class="category">
+	<div id="category1_header" class="category_header"
+		onclick="
+			mwl.toggleClass('#category1_items', 'show');
+			mwl.toggleClass('#category1_items', 'hide');
+			mwl.toggleClass('#category1_closed_arrow', 'hide');
+			mwl.toggleClass('#category1_closed_arrow', 'show');
+			mwl.toggleClass('#category1_open_arrow', 'hide');
+			mwl.toggleClass('#category1_open_arrow', 'show');
+		">
+		<table class="fillWidth" cellpadding="0" cellspacing="0" summary="Category Table">
+			<tr>
+				<td class="category_left">Category 1</td>
+				<td class="category_right">
+					<span id="category1_arrows">
+						<img class="show" id="category1_closed_arrow"
+							src="img/button_right.png" alt="show" />
+						<img class="hide" id="category1_open_arrow" 
+							src="img/button_down.png" alt="hide" />
+					</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="category1_items" class="hide item_container">
+		<div class="text_list_item" onclick="">Item 1-1</div>
+		<div class="text_list_item" onclick="">Item 1-2</div>
+		<div class="text_list_item" onclick="">Item 1-3</div>
+		<div class="text_list_item" onclick="">Item 1-4</div>
+	</div>
+</div>
+}}}
+
+CSS classes defining the lists and list items' look and feel:
+
+{{{
+/* Style definition for simple text list items */
+.text_list_item { 
+	background-color: #fff;
+	padding: 11px 8px 11px 8px;
+	font-weight: bold;
+	border-bottom: 1px #e7e7e7 solid;
+	font-size: 16px;
+}
+
+
+/* Style definition list section header item */
+.list_section_header {
+	background-color: #ced3c6;
+	color: white;
+	height: 20px;
+	padding-left: 12px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+
+/* Style definitions for list item with picture and text */
+.picture_list_item {
+	background-color: #fff;
+	padding: 0px 8px 0px 8px;
+	font-weight: bold;
+	border-bottom: 1px #e7e7e7 solid;
+	font-size: 16px;
+}
+
+.picture_list_item_image {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 6px;
+}
+
+
+/* Style definitions for the category list and its items */
+.category {
+	border-bottom: 2px #fff solid
+}
+
+.category_header {
+	height: 40px;
+	color: black;
+	background-color: #ced3c6;
+	padding: 0px 8px 0px 8px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+
+/* CSS classes used with the MWL functions for showing / hiding elements */
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+}}}

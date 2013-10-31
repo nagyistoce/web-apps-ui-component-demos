@@ -1,0 +1,137 @@
+= Expandable List =
+
+The Expandable List example demonstrates how to implement an accordion list.
+
+== Design ==
+
+The Expandable List example starts by demonstrating a single list with two different categories. Each of the category list items can be expanded to show a sub list.
+
+For more information on Lists, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction/lists.html Series 40 web apps design library].
+
+==== Expandable List help text: ====
+Expandable list shows single line items organised into an expandable headers/collapsible list. The header expands/list collapses by tapping the related “Category” header.
+
+[[Image(expandable_list.png)]]
+
+== Implementation ==
+
+The example code snippet shows how to create an expandable list with two pre-defined category list items. Each of the list's items is defined statically in HTML in order to avoid the client - server communication cost that would be caused with loading items dynamically with !JavaScript. 
+
+The expanding functionality is implemented simply by defining the sub list ready within the parent list item's structure, and by just by hiding it first (and showing when the parent is clicked).
+
+Please note, that the horizontal aligning of the elements is usually done with tables in S40 Web Apps, as the CSS "float" style formatting isn't supported.
+
+{{{
+<!--ExpandableList mini app-->
+<div id="expandableList" class="slider_section hide">
+	<div id="expandable_category1" class="category">
+		<div id="expandable_category1_header" class="category_header"
+			onclick="
+			mwl.toggleClass('#expandable_category1_items', 'show');
+			mwl.toggleClass('#expandable_category1_items', 'hide');
+			mwl.toggleClass('#expandable_category1_closed_arrow', 'hide');
+			mwl.toggleClass('#expandable_category1_closed_arrow', 'show');
+			mwl.toggleClass('#expandable_category1_open_arrow', 'hide');
+			mwl.toggleClass('#expandable_category1_open_arrow', 'show');">
+
+			<table class="fill" cellpadding="0" cellspacing="0" summary="Category Table">
+				<tr>
+					<td class="category_left"><div>Category 1</div></td>
+					<td class="category_right">
+						<span>
+							<img class="show" id="expandable_category1_closed_arrow"
+								src="img/button_right.png" alt="show" />
+							<img class="hide" id="expandable_category1_open_arrow"
+								src="img/button_down.png" alt="hide" />
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="expandable_category1_items" class="hide item_container">
+			<div class="text_list_item" onclick="">Item 1-1</div>
+			<div class="text_list_item" onclick="">Item 1-2</div>
+			<div class="text_list_item" onclick="">Item 1-3</div>
+			<div class="text_list_item" onclick="">Item 1-4</div>
+		</div>
+	</div>
+
+	<div id="expandable_category2" class="category">
+		<div id="expandable_category2_header" class="category_header"
+			onclick="
+			mwl.toggleClass('#expandable_category2_items', 'show');
+			mwl.toggleClass('#expandable_category2_items', 'hide');
+			mwl.toggleClass('#expandable_category2_closed_arrow', 'hide');
+			mwl.toggleClass('#expandable_category2_closed_arrow', 'show');
+			mwl.toggleClass('#expandable_category2_open_arrow', 'hide');
+			mwl.toggleClass('#expandable_category2_open_arrow', 'show');">
+
+			<table class="fill" cellpadding="0" cellspacing="0" summary="Category Table">
+				<tr>
+					<td class="category_left"><div>Category 2</div></td>
+					<td class="category_right">
+						<span>
+							<img class="show" id="expandable_category2_closed_arrow"
+								src="img/button_right.png" alt="show" />
+							<img class="hide" id="expandable_category2_open_arrow"
+								src="img/button_down.png" alt="hide" />
+						</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="expandable_category2_items" class="hide item_container">
+			<div class="text_list_item" onclick="">Item 2-1</div>
+			<div class="text_list_item" onclick="">Item 2-2</div>
+			<div class="text_list_item" onclick="">Item 2-3</div>
+			<div class="text_list_item" onclick="">Item 2-4</div>
+		</div>
+	</div>
+</div>
+<!--End ExpandableList mini app-->
+}}}
+
+CSS classes defining the list's and list items' look and feel:
+
+{{{
+/* Category list related style definitions */
+.category {
+	border-bottom: 2px #fff solid
+}
+
+.category_header {
+	height: 40px;
+	color: black;
+	background-color: #ced3c6;
+	padding: 0px 8px 0px 8px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.category_left  {
+	height: 40px;
+	text-align: left;
+}
+
+.category_right{
+	height: 40px;
+	text-align: right;
+}
+
+/* Generic list and list item style classes */
+.item_container {
+	background-color: #ced3c6;
+	padding: 8px;
+}
+
+.text_list_item { 
+	background-color: #fff;
+	padding: 11px 8px 11px 8px;
+	font-weight: bold;
+	border-bottom: 1px #e7e7e7 solid;
+	font-size: 16px;
+}
+}}}

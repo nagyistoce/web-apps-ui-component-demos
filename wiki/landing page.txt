@@ -1,0 +1,9 @@
+This simple example application demonstrates the basic use of the S40 Web Apps HTML "UI Components" (i.e. Code Snippets). The example is meant for both designers and developers: designers get an impression of how the components actually look on the device and developers learn how to use the Web Apps UI components. The application does not have an engine or further meaning. The texts are "lorem ipsum" and icons are simple thumbnails or images.
+
+Please check the ?[https://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction.html Series 40 Web Apps Design Library] for more information.[[BR]]
+
+For more information on the design and implementation of the application, see the [/wiki project wiki].
+
+[[Image(WikiStart:mini_apps_tab1.png, 200px)]]
+[[Image(WikiStart:mini_apps_tab2.png, 200px)]]
+[[Image(WikiStart:mini_apps_tab3.png, 200px)]]

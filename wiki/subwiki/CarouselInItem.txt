@@ -1,0 +1,136 @@
+= Carousel In-Item =
+
+Demonstrates transitions.
+
+== Design ==
+
+The Carousel In-Item example demonstrates how to implement carousel like image browser in a Web App. The example demonstrates using the subset of CSS 3 for animated transitions with -webkit-transition.
+
+The Carousel In-Item starts by demonstrating showing a photo and controls to scroll to next / previous photo, and an imaginary description for the image.
+
+For more information on Webkit transitions and supported CSS 3 features, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!technical-library/css-properties-and-values-supported.html Series 40 web apps design library].
+
+==== Carousel In-Item help text: ====
+Carousel, in-item shows images so that they use only a part of the actual view. This could be, for example, an information page about a certain item containing technical data and images. It is only possible to jump to the next or previous image. 
+
+[[Image(carousel_in_item.png)]]
+
+== Implementation ==
+
+=== Structure ===
+The example code snippet shows how to create different kinds of lists and  list items.
+
+Please note, that the horizontal aligning of the elements is usually done with tables in S40 Web Apps, as the CSS "float" style formatting isn't supported.
+
+{{{
+<!--CarouselInItem mini app-->
+<div id="carouselInItem" class="slider_section hide">
+
+  <!-- A div wrapper for carousel controls and images -->
+  <div>
+    <div class="list_section_header">Carousel, in-item</div>
+    <table class="fill carousel_in_item_height" cellpadding="0" cellspacing="0">
+      <tr>
+
+        <!-- Previous Button -->
+        <td class="alignL">
+          <input type="button" class="carousel_in_item_height carousel_back_forward_button" value="<"
+          onclick="mwl.iterateClass('#carousel_in_item_images', 'carousel_in_item_img', 'prev', 5, false, null);">
+          </input>
+        </td>
+
+        <!-- The Carousel Images -->
+        <td class="alignC" width="180">
+          <div class="carousel_in_item_container">
+            <div class="strip_carousel_in_item carousel_in_item_img0" id="carousel_in_item_images">
+              <table cellspacing="0" cellpadding="0" border="0"
+                summary="Images Table" class="carousel_in_item_height">
+                <tr>
+                  <td id="t2"><img class="carousel_in_item_image" src="img/img1.jpg" alt="image1" /></td>
+                  <td id="t1"><img class="carousel_in_item_image" src="img/img2.jpg" alt="image2" /></td>
+                  <td id="t3"><img class="carousel_in_item_image" src="img/img3.jpg" alt="image3" /></td>
+                  <td id="t4"><img class="carousel_in_item_image" src="img/img4.jpg" alt="image4" /></td>
+                  <td id="t5"><img class="carousel_in_item_image" src="img/img5.jpg" alt="image5" /></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+
+        <!-- Next Button -->
+        <td class="alignR">
+          <input type="button" class="carousel_in_item_height carousel_back_forward_button" value=">"
+          onclick="mwl.iterateClass('#carousel_in_item_images', 'carousel_in_item_img', 'next', 5, false, null);">
+          </input>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+  
+  <!-- An (imaginary) image description -->
+  <div class="text_block">Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+    nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat.</div>
+
+</div>
+<!--End CarouselInItem mini app-->
+}}}
+
+[[BR]]
+=== Style and transitions ===
+
+The div where the images are to be shown, is defined to be five time the image width wide (5 * 180px), as there are five image items in the carousel. The .strip_carousel_in_item class also defines a -webkit-transition property, by stating that the "margin-left" property is to be animated for half a seconds with linear easing curve.
+{{{
+.strip_carousel_in_item {
+	width: 900px;
+	-webkit-transition: margin-left 0.5s linear;
+}
+}}}
+
+The carousel item container is defined to be only one image wide. This is where the image will be shown.
+{{{
+.carousel_in_item_container {
+	width: 180px;
+	height: 110px;
+	overflow: hidden;
+}
+}}}
+
+
+Each image is given a similarly named class with a running index in the end. This class will define the horizontal position within the image div (i.e. the margin-left), which will then be animated according the set -webkit-transition properties. The animation is started with the mwl.iterateClass() function call. As a parameter it takes the CSS class name (.carousel_in_item_img*), which post-fix index will be increased / decreased based on the 'next' / 'prev' parameter.
+{{{
+.carousel_in_item_img0 {
+	margin-left: 0px;
+}
+
+.carousel_in_item_img1 {
+	margin-left: -180px;
+}
+
+.carousel_in_item_img2 {
+	margin-left: -360px;
+}
+
+.carousel_in_item_img3 {
+	margin-left: -540px;
+}
+
+.carousel_in_item_img4 {
+	margin-left: -720px;
+}
+}}}
+
+Some general CSS classes related to defining the carousel's look and feel:
+{{{
+.carousel_in_item_height {
+	height: 110px;
+}
+
+.carousel_back_forward_button {
+	width: 20px;
+}
+}}}

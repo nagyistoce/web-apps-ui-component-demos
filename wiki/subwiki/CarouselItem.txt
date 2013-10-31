@@ -1,0 +1,163 @@
+= Carousel Item =
+
+Demonstrates transitions and the usage of MWL timers.
+
+== Design ==
+
+The Carousel Item example demonstrates how to implement carousel like image browser in a Web App. The example demonstrates using the subset of CSS 3 for animated transitions with -webkit-transition.
+
+The Carousel Item starts by demonstrating showing a photo and controls to scroll to next / previous photo and start a slideshow.
+
+For more information on Webkit transitions and supported CSS 3 features, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!technical-library/css-properties-and-values-supported.html Series 40 web apps design library].
+
+==== Carousel Item help text: ====
+Carousel, item shows images so that they use the whole view. It is in practice a gallery where people can move to the next or previous image. It is also possible to show all images automatically one after another with a predefined delay between images (in the example this functionality can be started with Play).
+
+[[Image(carousel_item.png)]]
+
+== Implementation ==
+
+=== Structure ===
+The example code snippet shows the whole Carousel mini app implementation in detail.
+
+Please note, that the horizontal aligning of the elements is usually done with tables in S40 Web Apps, as the CSS "float" style formatting isn't supported.
+
+{{{
+<!--Carousel mini app-->
+<div id="carouselItem" class="slider_section hide">
+
+  <!-- Carousel next/prev buttons & slideshow start/stop button -->
+  <div id="slideshow_buttons_bar">
+    <div id="non_sliding_buttons_bar" class="show">
+
+      <!-- Previous picture button -->
+      <input type="button" class="carousel_slideshow_button" value="<"
+        onclick="mwl.iterateClass('#carousel_images', 'carousel_img', 'prev', 5, true, null);">
+      </input>
+
+      <!-- Start slideshow button -->
+      <input type="button" class="carousel_slideshow_button" value="o"
+        onclick="
+          mwl.setGroupTarget('#slideshow_buttons_bar', '#sliding_buttons_bar', 'show', 'hide');
+          mwl.iterateClass('#carousel_images', 'carousel_img', 'next', 5, false, null);
+          mwl.timer('timer1', 2000, 0, 
+            'mwl.iterateClass(\'#carousel_images\', \'carousel_img\', \'next\', 5, true, null )');">
+      </input>
+
+      <!-- Next picture button -->
+      <input type="button" class="carousel_slideshow_button" value=">"
+        onclick="mwl.iterateClass('#carousel_images', 'carousel_img', 'next', 5, true, null);">
+      </input>
+    </div>
+    
+    <!-- Second set of control buttons, same as before with the play => pause exception -->
+    <div id="sliding_buttons_bar" class="hide">
+      <input type="button" class="carousel_slideshow_button" value="<"
+        onclick="
+          mwl.stopTimer('timer1'); 
+          mwl.setGroupTarget('#slideshow_buttons_bar', '#non_sliding_buttons_bar', 'show', 'hide'); 
+          mwl.iterateClass('#carousel_images', 'carousel_img', 'prev', 5, false, null);">
+      </input>
+      <input type="button" class="carousel_slideshow_button " value="II"
+        onclick="
+          mwl.stopTimer('timer1');
+          mwl.setGroupTarget('#slideshow_buttons_bar', '#non_sliding_buttons_bar', 'show', 'hide')">
+      </input>
+      <input type="button" class="carousel_slideshow_button" value=">"
+        onclick="
+          mwl.stopTimer('timer1'); 
+          mwl.setGroupTarget('#slideshow_buttons_bar', '#non_sliding_buttons_bar', 'show', 'hide'); 
+          mwl.iterateClass('#carousel_images', 'carousel_img', 'next', 5, false, null);">
+      </input>
+    </div>
+  </div>
+
+  <!-- Container for the Carousel images -->
+  <div class="carousel_container">
+    <div class="strip_carousel carousel_img0" id="carousel_images">
+      <table cellspacing="0" cellpadding="0" border="0"
+        summary="Images Table" class="carousel_in_item_height">
+        <tr>
+          <td><img class="carousel_image" src="img/img1.jpg" alt="image1" /></td>
+          <td><img class="carousel_image" src="img/img2.jpg" alt="image2" /></td>
+          <td><img class="carousel_image" src="img/img3.jpg" alt="image3" /></td>
+          <td><img class="carousel_image" src="img/img4.jpg" alt="image4" /></td>
+          <td><img class="carousel_image" src="img/img5.jpg" alt="image5" /></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+</div>
+<!--End Carousel mini app-->
+}}}
+
+The interesting part differing from the Carousel In-Item example is the piece of MWL code that starts the slideshow animation:
+{{{
+<input type="button" class="carousel_slideshow_button" value="o"
+  onclick="
+    mwl.setGroupTarget('#slideshow_buttons_bar', '#sliding_buttons_bar', 'show', 'hide');
+    mwl.iterateClass('#carousel_images', 'carousel_img', 'next', 5, false, null);
+    mwl.timer('timer1', 2000, 0, 'mwl.iterateClass(\'#carousel_images\', \'carousel_img\', \'next\', 5, true, null )');">
+</input>
+}}}
+The first functional line, mwl.setGroupTarget(), simply just switches the sliding control buttons. Next line does one .carousel_img type class change in order for the slideshow to "start immediately". The mwl.timer() starts a never-ending timer that fires every 2 seconds and calls the mwl.iterateClass() to traverse through the .carousel_img* CSS classes. Check the Style and transitions for CSS class definitions.
+
+
+[[BR]]
+=== Style and transitions ===
+
+The div where the images are to be shown, is defined to be five time the image width wide (5 * 240px), as there are five image items in the carousel. The .strip_carousel_in_item class also defines a -webkit-transition property, by stating that the "margin-left" property is to be animated for half a seconds with linear easing curve.
+{{{
+.strip_carousel {
+	width: 1200px;
+	-webkit-transition: margin-left 0.5s linear;
+}
+}}}
+
+The carousel item container is defined to be only one image wide. This is where the image will be shown.
+{{{
+.carousel_container {
+	width: 240px;
+	height: 250px;
+	overflow: hidden;
+}
+}}}
+
+
+Each image is given a similarly named class with a running index in the end. This class will define the horizontal position within the image div (i.e. the margin-left), which will then be animated according the set -webkit-transition properties. The animation is started with the mwl.iterateClass() function call. As a parameter it takes the CSS class name (.carousel_item_img*), which postfixed index number will be increased / decreased based on the 'next' / 'prev' parameter.
+{{{
+.carousel_img0 {
+	margin-left: 0px;
+}
+
+.carousel_img1 {
+	margin-left: -240px;
+}
+
+.carousel_img2 {
+	margin-left: -480px;
+}
+
+.carousel_img3 {
+	margin-left: -720px;
+}
+
+.carousel_img4 {
+	margin-left: -960px;
+}
+}}}
+
+Some general CSS classes related to defining e.g. the carousel's image and button sizes:
+{{{
+.carousel_image {
+	width: 240px;
+	height: 250px;
+}
+
+.carousel_slideshow_button {
+	width: 76px;
+	height: 30px;
+}
+}}}

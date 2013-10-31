@@ -1,0 +1,113 @@
+= Text Fields =
+
+The Text fields example demonstrates creating text fields with labels, icons and buttons.
+
+== Design ==
+
+The Text fields example is simply a page with three different kinds of text input fields.
+
+For more information on Text fields, please see the 
+[http://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/#!design-library-intoduction/text-fields.html Series 40 web apps design library].
+
+==== Text fields help text: ====
+Text fields may carry additional information, such as a unit of measurement. There can also be a button with an icon which uses the full height of the field area (search icon in the example), or an embedded button with text (Update button in the example).
+
+[[Image(text_fields.png)]]
+
+== Implementation ==
+
+The example code snippet defines the entire Text field mini app (as shown in the screenshot above). Basically, it consists out of three Text field items, one with a label, second with an icon and third with button (though it doesn't handle the click).
+
+Please note, that the horizontal aligning of the elements is usually done with tables in S40 Web Apps, as the CSS "float" style formatting isn't supported.
+
+{{{
+<!--TextFields mini app-->
+<div id="textFields" class="slider_section hide">
+
+
+	<!-- Text field item with  -->
+	<div class="text_field_item">
+		<div>Label</div>
+		<div class="text_entry_with_label">
+			<table class="fill" cellpadding="0" cellspacing="0" summary="Button Table">
+				<tr>
+					<td class="text_input_cell"><input type="text" name="entry2" /></td>
+					<td><span>km</span></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<!-- Text field item with an icon -->
+	<div class="text_field_item">
+		<div>Icon button</div>
+		<div class="text_entry_with_icon">
+			<table class="fill" cellpadding="0" cellspacing="0" summary="Button Table">
+				<tr>
+					<td class="text_input_cell">
+						<input type="text" name="entry2" />
+					</td>
+					<td>
+						<img src="img/header_search.png" height="40" width="43" alt="Home" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<!-- Text field item with a (non-functioning) button -->
+	<div class="text_field_item">
+		<div>Text button</div>
+		<div class="text_entry_with_button">
+			<table class="fill" cellpadding="0" cellspacing="0" summary="Button Table">
+				<tr>
+					<td class="text_input_with_button_cell">
+						<input type="text" name="entry2" />
+					</td>
+					<td class="alignR">
+						<input class="button text_entry_button" 
+						type="button" name="button1" value="UPDATE" />
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+</div>
+<!--End TextFields mini app-->
+}}}
+
+CSS classes used with the text fields:
+
+{{{
+.text_field_item {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.text_entry_with_button {
+	height: 40px;
+	background-color: #c6cbce;
+	margin-top: 8px;
+	padding-left: 8px;
+	padding-right: 4px;
+}
+
+.text_entry_with_label {
+	height: 40px;
+	background-color: #c6cbce;
+	margin-top: 8px;
+	padding-left: 8px;
+}
+
+.text_entry_with_icon {
+	height: 40px;
+	background-color: #c6cbce;
+	margin-top: 8px;
+	padding-left: 8px;
+}
+}}}

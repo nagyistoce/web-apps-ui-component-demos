@@ -1,0 +1,43 @@
+This project demonstrates the different "UI components" (actually HTML, CSS and JS code snippets) and patterns that can be used in Series 40 web applications. The project is implemented as a single web application.
+
+[[Image(mini_apps_tab1.png)]]
+
+The examples contain the following:
+
+==== Elements ====
+ * [wiki:Buttons] demonstrates different Button layouts.
+ * [wiki:RadioButtons Radio buttons] demonstrates the use of radio buttons.
+ * [wiki:CheckBoxes Check boxes] demonstrates how to create and use check boxes.
+ * [wiki:Lists] demonstrates various list types.
+ * [wiki:Tabs] demonstrates using tabs within a Web Application.
+ * [wiki:TextFields Text Fields] demonstrates different types of text fields.
+
+==== Navigation ====
+ * [wiki:CarouseInItem Carousel, In-Item] demonstrates using -webkit-transitions with a sliding image container.
+ * [wiki:CarouselItem Carousel, Item] as Carousel In-Item, but with full screen.
+ * [wiki:DynamicLooping Dynamic Looping] demonstrates using dynamically loaded content using both MWL-methods and !JavaScript.
+ * [wiki:ExpandableList Expandable List] example demonstrates how to create an accordion list.
+ * [wiki:Picker] demonstrates selecting a value for a button from a list.
+ * [wiki:TabbedPages Tabbed pages] demonstrates navigation within a web application using tabs.
+ * [wiki:Tree Tree Structure] demonstrates how to create a dynamic, three levels deep tree like navigational example.
+
+==== Patterns ====
+ * [wiki:FileUpload File upload] demonstrates selecting and sending a file with HTML forms.
+ * [wiki:FileDownload File download] demonstrates downloading and saving a file from a server.
+ * [wiki:PageTitleLink Page Title Link] demonstrates tree structure like navigation, with added title link.
+ * [wiki:Passwords] example demonstrates using HTML password input and saving information with the password manager.
+ * [wiki:WebPageLink Web Page Link] demonstrates opening a web link from within a web app.
+ * [wiki:Search] demonstrates how to implement searching functionality to a web application.
+ * [wiki:Sharing Sharing content] example demonstrates how to incorporate sharing content via SMS or Facebook with web app technologies.
+
+
+The application is designed to work on most full touch, touch & type devices. It has been tested with:
+ * Nokia 306 (Full touch)
+ * Nokia 303 (Touch 'n type)
+ * Nokia 201 (Non-touch, landscape)
+
+
+Please check the ?Series 40 [https://www.developer.nokia.com/Resources/Library/Series_40_web_apps_library/ Web Apps Design Guidelines] for more information.
+
+== Release downloads ==
+[[FeaturedDownloads()]]
